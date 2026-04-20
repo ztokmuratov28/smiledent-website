@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SmileDent — Стоматология в Алматы</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'sans-serif'] },
+          colors: {
+            primary: { 50:'#eff6ff', 100:'#dbeafe', 500:'#3b82f6', 600:'#2563eb', 700:'#1d4ed8', 800:'#1e40af' },
+            teal:    { 400:'#2dd4bf', 500:'#14b8a6', 600:'#0d9488' },
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    .gradient-hero { background: linear-gradient(135deg, #1e40af 0%, #0d9488 100%); }
+    .card-hover { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .card-hover:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(0,0,0,0.12); }
+    .nav-link { position: relative; }
+    .nav-link::after { content:''; position:absolute; bottom:-2px; left:0; width:0; height:2px; background:#2dd4bf; transition: width 0.3s; }
+    .nav-link:hover::after { width:100%; }
+    .fade-in { opacity:0; transform:translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-in.visible { opacity:1; transform:translateY(0); }
+  </style>
+</head>
+<body class="font-sans text-gray-800 antialiased">
+
+  <!-- ───────────── NAVBAR ───────────── -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+
+        <!-- Logo -->
+        <a href="#home" class="flex items-center gap-2">
+          <div class="w-9 h-9 gradient-hero rounded-lg flex items-center justify-center">
+            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2C8.5 2 6 4 6 7c0 1.5.5 3 1 4.5C8 14 8 16 7 18c-.5 1.5-.3 3 .7 3.5 1 .6 2-.4 3-2 .5-1 1-1.5 1.3-1.5s.8.5 1.3 1.5c1 1.6 2 2.6 3 2 1-.5 1.2-2 .7-3.5-1-2-1-4 0-6.5.5-1.5 1-3 1-4.5 0-3-2.5-5-6-5z"/>
+            </svg>
+          </div>
+          <span class="text-xl font-800 font-extrabold text-primary-800">Smile<span class="text-teal-500">Dent</span></span>
+        </a>
+
+        <!-- Desktop nav -->
+        <div class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-600">
+          <a href="#services" class="nav-link hover:text-primary-700">Услуги</a>
+          <a href="#team"     class="nav-link hover:text-primary-700">Врачи</a>
+          <a href="#about"    class="nav-link hover:text-primary-700">О клинике</a>
+          <a href="#contact"  class="nav-link hover:text-primary-700">Контакты</a>
+          <a href="#contact"  class="ml-2 px-5 py-2 gradient-hero text-white rounded-full text-sm font-semibold hover:opacity-90 transition">Записаться</a>
+        </div>
+
+        <!-- Mobile burger -->
+        <button id="burger" class="md:hidden p-2 rounded-md text-gray-600 hover:text-primary-700">
+          <svg id="icon-open"  class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          <svg id="icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 px-4 pb-4 pt-2 space-y-1 text-sm font-medium text-gray-700">
+      <a href="#services" class="block py-2 hover:text-primary-700">Услуги</a>
+      <a href="#team"     class="block py-2 hover:text-primary-700">Врачи</a>
+      <a href="#about"    class="block py-2 hover:text-primary-700">О клинике</a>
+      <a href="#contact"  class="block py-2 hover:text-primary-700">Контакты</a>
+      <a href="#contact"  class="block mt-2 px-4 py-2 gradient-hero text-white rounded-full text-center font-semibold">Записаться</a>
+    </div>
+  </nav>
+
+  <!-- ───────────── HERO ───────────── -->
+  <section id="home" class="gradient-hero min-h-screen flex items-center relative overflow-hidden">
+    <!-- decorative circles -->
+    <div class="absolute -top-24 -right-24 w-96 h-96 bg-white/5 rounded-full"></div>
+    <div class="absolute bottom-0 -left-16 w-64 h-64 bg-white/5 rounded-full"></div>
+    <div class="absolute top-1/3 right-1/4 w-32 h-32 bg-teal-400/20 rounded-full blur-xl"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 grid lg:grid-cols-2 gap-12 items-center">
+      <div class="text-white fade-in">
+        <div class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm rounded-full px-4 py-1.5 text-sm font-medium mb-6">
+          <span class="w-2 h-2 bg-teal-400 rounded-full animate-pulse"></span>
+          Принимаем пациентов · Алматы
+        </div>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-6">
+          Ваша улыбка —<br/>
+          <span class="text-teal-300">наша гордость</span>
+        </h1>
+        <p class="text-lg text-blue-100 leading-relaxed mb-8 max-w-lg">
+          SmileDent — современная стоматологическая клиника в Алматы. Мы заботимся о здоровье ваших зубов с использованием передовых технологий и тёплого человеческого подхода.
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <a href="#contact" class="px-8 py-3.5 bg-white text-primary-700 font-bold rounded-full hover:bg-blue-50 transition shadow-lg">
+            Записаться онлайн
+          </a>
+          <a href="#services" class="px-8 py-3.5 border-2 border-white/50 text-white font-semibold rounded-full hover:bg-white/10 transition">
+            Наши услуги
+          </a>
+        </div>
+        <!-- Stats -->
+        <div class="mt-12 grid grid-cols-3 gap-6">
+          <div>
+            <p class="text-3xl font-extrabold text-white">12+</p>
+            <p class="text-blue-200 text-sm mt-1">лет опыта</p>
+          </div>
+          <div>
+            <p class="text-3xl font-extrabold text-white">8 000+</p>
+            <p class="text-blue-200 text-sm mt-1">довольных пациентов</p>
+          </div>
+          <div>
+            <p class="text-3xl font-extrabold text-white">15</p>
+            <p class="text-blue-200 text-sm mt-1">специалистов</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero illustration card -->
+      <div class="hidden lg:block fade-in">
+        <div class="relative">
+          <div class="bg-white/10 backdrop-blur-sm rounded-3xl p-8 border border-white/20">
+            <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=600&q=80&auto=format&fit=crop"
+                 alt="Стоматолог SmileDent"
+                 class="rounded-2xl w-full object-cover h-80 shadow-2xl" />
+            <!-- Floating badge -->
+            <div class="absolute -bottom-5 -left-5 bg-white rounded-2xl shadow-xl px-5 py-3 flex items-center gap-3">
+              <div class="w-10 h-10 bg-teal-500 rounded-xl flex items-center justify-center">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              </div>
+              <div>
+                <p class="text-xs text-gray-500">Сертификация ISO</p>
+                <p class="text-sm font-bold text-gray-800">9001:2015</p>
+              </div>
+            </div>
+            <!-- Rating badge -->
+            <div class="absolute -top-4 -right-4 bg-yellow-400 rounded-2xl shadow-xl px-4 py-2 flex items-center gap-1.5">
+              <svg class="w-4 h-4 text-yellow-800" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <span class="text-sm font-bold text-yellow-900">4.9 / 5.0</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Wave -->
+    <div class="absolute bottom-0 left-0 right-0">
+      <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 80L60 68C120 56 240 32 360 26.7C480 21.3 600 34.7 720 42.7C840 50.7 960 53.3 1080 48C1200 42.7 1320 29.3 1380 22.7L1440 16V80H1380C1320 80 1200 80 1080 80C960 80 840 80 720 80C600 80 480 80 360 80C240 80 120 80 60 80H0Z" fill="white"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ───────────── SERVICES ───────────── -->
+  <section id="services" class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16 fade-in">
+        <span class="text-teal-500 font-semibold text-sm uppercase tracking-widest">Что мы предлагаем</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mt-2">Наши услуги</h2>
+        <p class="text-gray-500 mt-4 max-w-xl mx-auto">Полный спектр стоматологических услуг для взрослых и детей. Используем только сертифицированные материалы ведущих производителей.</p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+        <!-- Service cards -->
+        <div class="card-hover bg-gradient-to-br from-blue-50 to-white border border-blue-100 rounded-2xl p-7 fade-in">
+          <div class="w-12 h-12 bg-primary-600 rounded-xl flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+          </div>
+          <h3 class="text-lg font-bold text-gray-900 mb-2">Профессиональная чистка</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">Ультразвуковое удаление зубного камня и налёта. Полировка и реминерализация эмали. Рекомендуется каждые 6 месяцев.</p>
+          <p class="mt-4 text-primary-600 font-bold text-sm">от 8 000 ₸</p>
+        </div>
+
+        <div class="card-hover bg-gradient-to-br from-teal-50 to-white border border-teal-100 rounded-2xl p-7 fade-in">
+          <div class="w-12 h-12 bg-teal-500 rounded-xl flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707"/></svg>
+          </div>
+          <h3 class="text-lg font-bold text-gray-900 mb-2">Отбеливание зубов</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">Клиническое отбеливание системой Zoom 4. Результат — до 8 тонов светлее за один сеанс. Безопасно для эмали.</p>
+          <p class="mt-4 text-teal-600 font-bold text-sm">от 45 000 ₸</p>
+        </div>
+
+        <div class="card-hover bg-gradient-to-br from-purple-50 to-white border border-purple-100 rounded-2xl p-7 fade-in">
+          <div class="w-12 h-12 bg-purple-600 rounded-xl flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+          </div>
+          <h3 class="text-lg font-bold text-gray-900 mb-2">Ортодонтия</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">Брекеты металлические и сапфировые, элайнеры Invisalign. Исправление прикуса у детей и взрослых. Консультация бесплатно.</p>
+          <p class="mt-4 text-purple-600 font-bold text-sm">от 120 000 ₸</p>
+        </div>
+
+        <div class="card-hover bg-gradient-to-br from-orange-50 to-white border border-orange-100 rounded-2xl p-7 fade-in">
+          <div class="w-12 h-12 bg-orange-500 rounded-xl flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+          </div>
+          <h3 class="text-lg font-bold text-gray-900 mb-2">Имплантация</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">Установка имплантов Nobel Biocare и Straumann. Одноэтапная и двухэтапная имплантация. Гарантия 10 лет.</p>
+          <p class="mt-4 text-orange-600 font-bold text-sm">от 180 000 ₸</p>
+        </div>
+
+        <div class="card-hover bg-gradient-to-br from-green-50 to-white border border-green-100 rounded-2xl p-7 fade-in">
+          <div class="w-12 h-12 bg-green-600 rounded-xl flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <h3 class="text-lg font-bold text-gray-900 mb-2">Детская стоматология</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">Лечение молочных и постоянных зубов у детей от 1 года. Комфортная атмосфера, игровая зона. Без страха и боли.</p>
+          <p class="mt-4 text-green-600 font-bold text-sm">от 5 000 ₸</p>
+        </div>
+
+        <div class="card-hover bg-gradient-to-br from-pink-50 to-white border border-pink-100 rounded-2xl p-7 fade-in">
+          <div class="w-12 h-12 bg-pink-500 rounded-xl flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
+          </div>
+          <h3 class="text-lg font-bold text-gray-900 mb-2">Эстетическая реставрация</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">Виниры, люминиры, художественная реставрация. Создаём идеальную улыбку по методу Digital Smile Design.</p>
+          <p class="mt-4 text-pink-600 font-bold text-sm">от 35 000 ₸</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ───────────── ABOUT ───────────── -->
+  <section id="about" class="py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-16 items-center">
+      <div class="fade-in order-2 lg:order-1">
+        <span class="text-teal-500 font-semibold text-sm uppercase tracking-widest">О клинике</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mt-2 mb-6">Почему выбирают SmileDent?</h2>
+        <div class="space-y-5">
+          <div class="flex gap-4">
+            <div class="flex-shrink-0 w-10 h-10 bg-primary-100 rounded-xl flex items-center justify-center">
+              <svg class="w-5 h-5 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+            </div>
+            <div>
+              <h4 class="font-bold text-gray-900">Современное оборудование</h4>
+              <p class="text-gray-500 text-sm mt-1">3D-томограф, цифровые слепки, лазерное лечение — всё для точной диагностики и безболезненного лечения.</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="flex-shrink-0 w-10 h-10 bg-teal-100 rounded-xl flex items-center justify-center">
+              <svg class="w-5 h-5 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            </div>
+            <div>
+              <h4 class="font-bold text-gray-900">Опытные врачи</h4>
+              <p class="text-gray-500 text-sm mt-1">Наши специалисты проходят ежегодное обучение в лучших клиниках Европы и США. Высшая квалификационная категория.</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="flex-shrink-0 w-10 h-10 bg-orange-100 rounded-xl flex items-center justify-center">
+              <svg class="w-5 h-5 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <div>
+              <h4 class="font-bold text-gray-900">Удобное расписание</h4>
+              <p class="text-gray-500 text-sm mt-1">Работаем с 8:00 до 21:00 без выходных. Онлайн-запись доступна 24/7. Принимаем по экстренным случаям.</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="flex-shrink-0 w-10 h-10 bg-green-100 rounded-xl flex items-center justify-center">
+              <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
+            </div>
+            <div>
+              <h4 class="font-bold text-gray-900">Рассрочка 0%</h4>
+              <p class="text-gray-500 text-sm mt-1">Сотрудничаем с ведущими банками Казахстана. Рассрочка до 24 месяцев без переплат на любые услуги.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="fade-in order-1 lg:order-2 grid grid-cols-2 gap-4">
+        <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=400&q=80&auto=format&fit=crop" class="rounded-2xl w-full h-56 object-cover shadow-lg mt-8" alt="Кабинет" />
+        <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=400&q=80&auto=format&fit=crop" class="rounded-2xl w-full h-56 object-cover shadow-lg" alt="Оборудование" />
+        <img src="https://images.unsplash.com/photo-1609840112855-6dd4498f8a96?w=400&q=80&auto=format&fit=crop" class="rounded-2xl w-full h-56 object-cover shadow-lg" alt="Врач" />
+        <img src="https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?w=400&q=80&auto=format&fit=crop" class="rounded-2xl w-full h-56 object-cover shadow-lg mt-8" alt="Инструменты" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ───────────── TEAM ───────────── -->
+  <section id="team" class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16 fade-in">
+        <span class="text-teal-500 font-semibold text-sm uppercase tracking-widest">Специалисты</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mt-2">Наши врачи</h2>
+        <p class="text-gray-500 mt-4 max-w-xl mx-auto">Познакомьтесь с командой профессионалов, которые заботятся о вашей улыбке каждый день.</p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+        <!-- Doctor 1 -->
+        <div class="card-hover bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-sm fade-in">
+          <div class="relative">
+            <img src="https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=600&q=80&auto=format&fit=crop&crop=faces"
+                 alt="Доктор Айгерим Сейткали"
+                 class="w-full h-64 object-cover object-top" />
+            <div class="absolute bottom-3 right-3 bg-teal-500 text-white text-xs font-bold px-3 py-1 rounded-full">Главный врач</div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-900">Айгерим Сейткали</h3>
+            <p class="text-teal-600 font-medium text-sm mt-1">Хирург-имплантолог · Ортопед</p>
+            <p class="text-gray-500 text-sm mt-3 leading-relaxed">Более 14 лет практики. Специализируется на дентальной имплантации и протезировании. Обучалась в Германии (Meiningen Institute).</p>
+            <div class="mt-4 flex gap-2 flex-wrap">
+              <span class="bg-blue-50 text-primary-700 text-xs px-3 py-1 rounded-full font-medium">Имплантация</span>
+              <span class="bg-blue-50 text-primary-700 text-xs px-3 py-1 rounded-full font-medium">Протезирование</span>
+            </div>
+            <div class="mt-5 flex items-center gap-1">
+              <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <span class="text-xs text-gray-400 ml-1">5.0 (128 отзывов)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Doctor 2 -->
+        <div class="card-hover bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-sm fade-in">
+          <div class="relative">
+            <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=600&q=80&auto=format&fit=crop&crop=faces"
+                 alt="Доктор Нурлан Ахметов"
+                 class="w-full h-64 object-cover object-top" />
+            <div class="absolute bottom-3 right-3 bg-primary-600 text-white text-xs font-bold px-3 py-1 rounded-full">Ортодонт</div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-900">Нурлан Ахметов</h3>
+            <p class="text-primary-600 font-medium text-sm mt-1">Ортодонт · Детский стоматолог</p>
+            <p class="text-gray-500 text-sm mt-3 leading-relaxed">10 лет опыта в ортодонтии. Сертифицированный специалист Invisalign. Автор научных статей по детскому прикусу.</p>
+            <div class="mt-4 flex gap-2 flex-wrap">
+              <span class="bg-blue-50 text-primary-700 text-xs px-3 py-1 rounded-full font-medium">Брекеты</span>
+              <span class="bg-blue-50 text-primary-700 text-xs px-3 py-1 rounded-full font-medium">Invisalign</span>
+              <span class="bg-blue-50 text-primary-700 text-xs px-3 py-1 rounded-full font-medium">Дети</span>
+            </div>
+            <div class="mt-5 flex items-center gap-1">
+              <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <span class="text-xs text-gray-400 ml-1">4.9 (97 отзывов)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Doctor 3 -->
+        <div class="card-hover bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-sm fade-in">
+          <div class="relative">
+            <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=600&q=80&auto=format&fit=crop&crop=faces"
+                 alt="Доктор Дина Жумабекова"
+                 class="w-full h-64 object-cover object-top" />
+            <div class="absolute bottom-3 right-3 bg-pink-500 text-white text-xs font-bold px-3 py-1 rounded-full">Эстетика</div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-900">Дина Жумабекова</h3>
+            <p class="text-pink-600 font-medium text-sm mt-1">Эстетическая стоматология</p>
+            <p class="text-gray-500 text-sm mt-3 leading-relaxed">9 лет опыта в эстетической реставрации. Специалист по цифровому дизайну улыбки. Работает с известными артистами Казахстана.</p>
+            <div class="mt-4 flex gap-2 flex-wrap">
+              <span class="bg-pink-50 text-pink-700 text-xs px-3 py-1 rounded-full font-medium">Виниры</span>
+              <span class="bg-pink-50 text-pink-700 text-xs px-3 py-1 rounded-full font-medium">Отбеливание</span>
+              <span class="bg-pink-50 text-pink-700 text-xs px-3 py-1 rounded-full font-medium">DSD</span>
+            </div>
+            <div class="mt-5 flex items-center gap-1">
+              <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <span class="text-xs text-gray-400 ml-1">5.0 (84 отзыва)</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ───────────── TESTIMONIALS ───────────── -->
+  <section class="py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12 fade-in">
+        <span class="text-teal-500 font-semibold text-sm uppercase tracking-widest">Отзывы</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mt-2">Что говорят пациенты</h2>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 fade-in">
+          <div class="flex gap-1 mb-4">
+            <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p class="text-gray-600 text-sm leading-relaxed">"Прекрасная клиника! Делала виниры у Дины — результат превзошёл все ожидания. Улыбка мечты стала реальностью. Очень рекомендую!"</p>
+          <div class="mt-4 flex items-center gap-3">
+            <div class="w-9 h-9 bg-pink-100 rounded-full flex items-center justify-center text-pink-600 font-bold text-sm">МА</div>
+            <div>
+              <p class="text-sm font-semibold text-gray-900">Мадина Аубакирова</p>
+              <p class="text-xs text-gray-400">Пациент · 2024</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 fade-in">
+          <div class="flex gap-1 mb-4">
+            <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p class="text-gray-600 text-sm leading-relaxed">"Вылечил сына у Нурлана — ребёнок даже не испугался! Врач умеет найти подход к детям. Теперь весь наш семья лечится только здесь."</p>
+          <div class="mt-4 flex items-center gap-3">
+            <div class="w-9 h-9 bg-blue-100 rounded-full flex items-center justify-center text-primary-600 font-bold text-sm">АИ</div>
+            <div>
+              <p class="text-sm font-semibold text-gray-900">Алибек Ибраев</p>
+              <p class="text-xs text-gray-400">Пациент · 2024</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 fade-in">
+          <div class="flex gap-1 mb-4">
+            <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p class="text-gray-600 text-sm leading-relaxed">"Установила импланты у Айгерим. Профессионализм высочайшего уровня. Современное оборудование, стерильно, комфортно. Очень довольна результатом!"</p>
+          <div class="mt-4 flex items-center gap-3">
+            <div class="w-9 h-9 bg-teal-100 rounded-full flex items-center justify-center text-teal-600 font-bold text-sm">СН</div>
+            <div>
+              <p class="text-sm font-semibold text-gray-900">Сауле Нурмаганбетова</p>
+              <p class="text-xs text-gray-400">Пациент · 2025</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ───────────── CONTACT ───────────── -->
+  <section id="contact" class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16 fade-in">
+        <span class="text-teal-500 font-semibold text-sm uppercase tracking-widest">Связаться с нами</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mt-2">Запись на приём</h2>
+        <p class="text-gray-500 mt-4 max-w-xl mx-auto">Оставьте заявку и мы перезвоним вам в течение 15 минут для подтверждения записи.</p>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-12">
+
+        <!-- Form -->
+        <div class="bg-gray-50 rounded-3xl p-8 fade-in">
+          <form id="contact-form" onsubmit="handleSubmit(event)" novalidate>
+            <div class="grid sm:grid-cols-2 gap-5 mb-5">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1.5">Ваше имя *</label>
+                <input type="text" id="name" placeholder="Имя Фамилия" required
+                  class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent text-sm transition" />
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1.5">Телефон *</label>
+                <input type="tel" id="phone" placeholder="+7 (___) ___-__-__" required
+                  class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent text-sm transition" />
+              </div>
+            </div>
+            <div class="mb-5">
+              <label class="block text-sm font-medium text-gray-700 mb-1.5">Email</label>
+              <input type="email" id="email" placeholder="example@mail.com"
+                class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent text-sm transition" />
+            </div>
+            <div class="mb-5">
+              <label class="block text-sm font-medium text-gray-700 mb-1.5">Услуга</label>
+              <select id="service" class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent text-sm transition text-gray-700">
+                <option value="">— Выберите услугу —</option>
+                <option>Профессиональная чистка</option>
+                <option>Отбеливание зубов</option>
+                <option>Ортодонтия (брекеты/элайнеры)</option>
+                <option>Имплантация</option>
+                <option>Детская стоматология</option>
+                <option>Эстетическая реставрация</option>
+                <option>Другое</option>
+              </select>
+            </div>
+            <div class="mb-6">
+              <label class="block text-sm font-medium text-gray-700 mb-1.5">Сообщение</label>
+              <textarea id="message" rows="4" placeholder="Опишите ваш запрос или вопрос..."
+                class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent text-sm transition resize-none"></textarea>
+            </div>
+            <button type="submit"
+              class="w-full py-3.5 gradient-hero text-white font-bold rounded-xl hover:opacity-90 transition text-sm shadow-lg shadow-primary-200">
+              Отправить заявку
+            </button>
+            <p id="form-success" class="hidden mt-4 text-center text-green-600 font-medium text-sm bg-green-50 rounded-xl py-3">
+              ✓ Заявка принята! Мы свяжемся с вами в течение 15 минут.
+            </p>
+          </form>
+        </div>
+
+        <!-- Contact info + map -->
+        <div class="fade-in space-y-6">
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div class="bg-primary-50 rounded-2xl p-5">
+              <div class="w-10 h-10 bg-primary-600 rounded-xl flex items-center justify-center mb-3">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+              </div>
+              <h4 class="font-bold text-gray-900 text-sm">Адрес</h4>
+              <p class="text-gray-600 text-sm mt-1">ул. Достык, 123<br/>Алматы, Казахстан</p>
+            </div>
+            <div class="bg-teal-50 rounded-2xl p-5">
+              <div class="w-10 h-10 bg-teal-500 rounded-xl flex items-center justify-center mb-3">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+              </div>
+              <h4 class="font-bold text-gray-900 text-sm">Телефон</h4>
+              <p class="text-gray-600 text-sm mt-1">+7 (727) 123-45-67<br/>+7 (700) 987-65-43</p>
+            </div>
+            <div class="bg-orange-50 rounded-2xl p-5">
+              <div class="w-10 h-10 bg-orange-500 rounded-xl flex items-center justify-center mb-3">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              </div>
+              <h4 class="font-bold text-gray-900 text-sm">Режим работы</h4>
+              <p class="text-gray-600 text-sm mt-1">Пн–Вс: 8:00 – 21:00<br/>Без выходных</p>
+            </div>
+            <div class="bg-green-50 rounded-2xl p-5">
+              <div class="w-10 h-10 bg-green-600 rounded-xl flex items-center justify-center mb-3">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+              </div>
+              <h4 class="font-bold text-gray-900 text-sm">Email</h4>
+              <p class="text-gray-600 text-sm mt-1">info@smiledent.kz<br/>record@smiledent.kz</p>
+            </div>
+          </div>
+
+          <!-- Google Maps Embed (Almaty city center) -->
+          <div class="rounded-2xl overflow-hidden shadow-md border border-gray-100 h-56">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d91804.78386099457!2d76.84905509853684!3d43.238948699999994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38836ef2b2ad25a7%3A0x7ba4b3e3cd32abee!2z0JDQu9C80LDRgtGL!5e0!3m2!1sru!2skz!4v1700000000000"
+              width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade" title="SmileDent на карте">
+            </iframe>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ───────────── FOOTER ───────────── -->
+  <footer class="bg-gray-900 text-gray-400">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
+
+        <!-- Brand -->
+        <div class="lg:col-span-1">
+          <div class="flex items-center gap-2 mb-4">
+            <div class="w-9 h-9 gradient-hero rounded-lg flex items-center justify-center">
+              <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.5 2 6 4 6 7c0 1.5.5 3 1 4.5C8 14 8 16 7 18c-.5 1.5-.3 3 .7 3.5 1 .6 2-.4 3-2 .5-1 1-1.5 1.3-1.5s.8.5 1.3 1.5c1 1.6 2 2.6 3 2 1-.5 1.2-2 .7-3.5-1-2-1-4 0-6.5.5-1.5 1-3 1-4.5 0-3-2.5-5-6-5z"/></svg>
+            </div>
+            <span class="text-xl font-extrabold text-white">Smile<span class="text-teal-400">Dent</span></span>
+          </div>
+          <p class="text-sm leading-relaxed mb-5">Современная стоматологическая клиника в сердце Алматы. Ваша улыбка — наша гордость с 2012 года.</p>
+          <div class="flex gap-3">
+            <a href="#" class="w-9 h-9 bg-gray-800 hover:bg-primary-600 rounded-lg flex items-center justify-center transition">
+              <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+            <a href="#" class="w-9 h-9 bg-gray-800 hover:bg-pink-600 rounded-lg flex items-center justify-center transition">
+              <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+            <a href="#" class="w-9 h-9 bg-gray-800 hover:bg-blue-500 rounded-lg flex items-center justify-center transition">
+              <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Services -->
+        <div>
+          <h4 class="text-white font-semibold mb-4 text-sm">Услуги</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#services" class="hover:text-white transition">Профессиональная чистка</a></li>
+            <li><a href="#services" class="hover:text-white transition">Отбеливание</a></li>
+            <li><a href="#services" class="hover:text-white transition">Ортодонтия</a></li>
+            <li><a href="#services" class="hover:text-white transition">Имплантация</a></li>
+            <li><a href="#services" class="hover:text-white transition">Детская стоматология</a></li>
+            <li><a href="#services" class="hover:text-white transition">Эстетика</a></li>
+          </ul>
+        </div>
+
+        <!-- Clinic -->
+        <div>
+          <h4 class="text-white font-semibold mb-4 text-sm">Клиника</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#about"   class="hover:text-white transition">О нас</a></li>
+            <li><a href="#team"    class="hover:text-white transition">Наши врачи</a></li>
+            <li><a href="#"        class="hover:text-white transition">Цены</a></li>
+            <li><a href="#"        class="hover:text-white transition">Акции</a></li>
+            <li><a href="#contact" class="hover:text-white transition">Контакты</a></li>
+            <li><a href="#"        class="hover:text-white transition">Лицензии</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact info -->
+        <div>
+          <h4 class="text-white font-semibold mb-4 text-sm">Контакты</h4>
+          <ul class="space-y-3 text-sm">
+            <li class="flex gap-2">
+              <svg class="w-4 h-4 text-teal-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/></svg>
+              <span>ул. Достык, 123, Алматы</span>
+            </li>
+            <li class="flex gap-2">
+              <svg class="w-4 h-4 text-teal-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+              <span>+7 (727) 123-45-67</span>
+            </li>
+            <li class="flex gap-2">
+              <svg class="w-4 h-4 text-teal-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+              <span>info@smiledent.kz</span>
+            </li>
+            <li class="flex gap-2">
+              <svg class="w-4 h-4 text-teal-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              <span>Пн–Вс: 8:00 – 21:00</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="mt-12 pt-8 border-t border-gray-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
+        <p>&copy; 2025 SmileDent. Все права защищены.</p>
+        <div class="flex gap-5">
+          <a href="#" class="hover:text-white transition">Политика конфиденциальности</a>
+          <a href="#" class="hover:text-white transition">Пользовательское соглашение</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ───────────── JS ───────────── -->
+  <script>
+    // Mobile menu toggle
+    const burger = document.getElementById('burger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const iconOpen = document.getElementById('icon-open');
+    const iconClose = document.getElementById('icon-close');
+
+    burger.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+      iconOpen.classList.toggle('hidden');
+      iconClose.classList.toggle('hidden');
+    });
+
+    // Close mobile menu on link click
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        iconOpen.classList.remove('hidden');
+        iconClose.classList.add('hidden');
+      });
+    });
+
+    // Scroll-based fade-in animation
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Contact form
+    function handleSubmit(e) {
+      e.preventDefault();
+      const name  = document.getElementById('name').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      if (!name || !phone) {
+        alert('Пожалуйста, заполните обязательные поля: Имя и Телефон.');
+        return;
+      }
+      document.getElementById('contact-form').reset();
+      document.getElementById('form-success').classList.remove('hidden');
+      setTimeout(() => document.getElementById('form-success').classList.add('hidden'), 5000);
+    }
+  </script>
+</body>
+</html>
